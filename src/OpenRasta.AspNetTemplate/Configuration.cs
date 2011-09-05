@@ -19,11 +19,14 @@ namespace OpenRasta.AspNetTemplate
     {
         public void Configure()
         {
-            ResourceSpace.Has
-                .ResourcesOfType<Home>()
-                .AtUri("/").And.AtUri("/home")
-                .HandledBy<HomeHandler>()
-                .AsXmlDataContract();
+            using (OpenRastaConfiguration.Manual)
+            {
+                ResourceSpace.Has
+                    .ResourcesOfType<Home>()
+                    .AtUri("/").And.AtUri("/home")
+                    .HandledBy<HomeHandler>()
+                    .AsXmlDataContract();
+            }
         }
     }
 }
