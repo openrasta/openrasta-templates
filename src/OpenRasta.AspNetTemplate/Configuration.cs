@@ -7,6 +7,8 @@ using System.Text;
 using System.Web;
 using System.Xml;
 using System.Xml.Linq;
+using OpenRasta.AspNetTemplate.Handlers;
+using OpenRasta.AspNetTemplate.Resources;
 using OpenRasta.Configuration;
 using OpenRasta.Web;
 using OpenRasta.Codecs;
@@ -17,8 +19,11 @@ namespace OpenRasta.AspNetTemplate
     {
         public void Configure()
         {
-            ResourceSpace.Uses.LinkingXmlDataContract();
-            ResourceSpace.Uses.ConventionsFrom(this);
+            ResourceSpace.Has
+                .ResourcesOfType<Home>()
+                .AtUri("/").And.AtUri("/home")
+                .HandledBy<HomeHandler>()
+                .AsXmlDataContract();
         }
     }
 }

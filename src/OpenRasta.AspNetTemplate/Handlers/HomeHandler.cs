@@ -8,7 +8,7 @@ namespace OpenRasta.AspNetTemplate.Handlers
     {
         public Home Get()
         {
-            return new Home();
+            return new Home { Message = "Hello world" };
         }
     }
 }
